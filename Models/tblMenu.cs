@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace estore.Models;
 
 public partial class TblMenu
 {
+    [Key]
     public int MenuId { get; set; }
 
-    public string? Title { get; set; }
+    public string? MenuName { get; set; }
 
     public string? Alias { get; set; }
 
@@ -15,11 +17,14 @@ public partial class TblMenu
 
     public int? CategoryId { get; set; }
 
-    public string? ParentId { get; set; }
+    public int ParentId { get; set; }
 
     public string? Posion { get; set; }
 
     public bool? IsActive { get; set; }
+    public int Levels { get; set; }
+    public int MenuOrder { get; set; }
+    
 
-    public virtual TblCategory? Category { get; set; }
+    //public virtual TblCategory? Category { get; set; }
 }

@@ -6,6 +6,6 @@ namespace estore.Models
     {
         public DataContex(DbContextOptions<DataContex> options) : base(options)
         {}
-        public DbSet<tblMenu> tblMenus{ get; set; }
+        public DbSet<TblMenu> tblMenus{ get; set; }
     }
 }
