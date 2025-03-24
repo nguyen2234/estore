@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Shared\Components\MenuView\" />
     <Folder Include="Views\NewFolder\" />
   </ItemGroup>
 
