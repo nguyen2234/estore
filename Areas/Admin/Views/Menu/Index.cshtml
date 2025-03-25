@@ -7,7 +7,7 @@
     <div class="pagetitle">
         <h2>Danh sách chức năng</h2>
         <p>
-            <a type="button" class="btn btn-success" asp-area="Admin" asp-controller="Menu" asp-action="Create" >
+            <a type="button" class="btn btn-success" asp-area="Admin" asp-controller="Menu" asp-action="Create">
                 <i class="bi bi-file-earmark-text me-1">Thêm Menu</i>
             </a>
             <section class="sectio dashboard">
@@ -27,7 +27,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach(var item in Model)
+                                    @foreach (var item in Model)
                                     {
                                         <tr>
                                             <td class="text-center" scope="row">@item.MenuId</td>
@@ -38,18 +38,18 @@
                                             <td class="text-center" scope="row">@item.IsActive</td>
                                             <td class="text-center" scope="row">
                                                 <a asp-area="Admin" asp-controller="Menu" asp-action="Edit" asp-route-id="@item.MenuId" class="btn btn-primary btn-sm"
-                                                title="Chỉnh sửa"><i class="bi bi-pencil"></i></a>
+                                                   title="Chỉnh sửa"><i class="bi bi-pencil"></i></a>
                                                 <a asp-area="Admin" asp-controller="Menu" asp-action="Delete" asp-route-id="@item.MenuId" class="btn btn-danger btn-sm"
                                                    title="Xóa"><i class="bi bi-trash"></i></a>
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
-                              </table>
-                       </div>
-                   </div>
-               </div>
-           </section>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </p>
     </div>
 </main>

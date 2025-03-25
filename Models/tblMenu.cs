@@ -13,16 +13,14 @@ namespace estore.Models
 
         public string? MenuName { get; set; }
 
-        public string? Icon { get; set; }
+        public bool? IsActive { get; set; }
 
         public int ParentId { get; set; }
-
-        public bool? IsActive { get; set; }
 
         public int Levels { get; set; }
 
         public int MenuOrder { get; set; }
 
-        //public string? Link { get; set; }
+        public string? Link { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using estore.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using NuGet.Common;
 
 namespace estore.Areas.Admin.Controllers
@@ -23,11 +24,11 @@ namespace estore.Areas.Admin.Controllers
             if (id == null || id == 0)
                 return NotFound();
             var mn = _context.tblMenus.Find(id);
-            if(mn ==null)
-            
+            if (mn == null)
+
                 return NotFound();
             return View(mn);
-            
+
         }
         [HttpPost]
         public IActionResult Delete(int id)
@@ -38,6 +39,64 @@ namespace estore.Areas.Admin.Controllers
             _context.tblMenus.Remove(delmn);
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public IActionResult Create()
+        {
+            var mnlist = (from m in _context.tblMenus
+                          select new SelectListItem()
+                          {
+                              Text = (m.Levels == 1) ? m.MenuName : "--" + m.MenuName,
+                              Value = m.MenuId.ToString()
+                          }).ToList();
+            mnlist.Insert(0, new SelectListItem()
+            {
+                Text = "---Lựa chọn---",
+                Value = "0"
+            });
+            ViewBag.mnlist = mnlist;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(TblMenu mn)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.tblMenus.Add(mn);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+        public IActionResult Edit(int? id)
+        {
+            if (id == null || id == 0)
+                return NotFound();
+            var mn = _context.tblMenus.Find(id);
+            if (mn == null) return NotFound();
+            var mnlist = (from m in _context.tblMenus
+                          select new SelectListItem()
+                          {
+                              Text = (m.Levels == 1) ? m.MenuName : "--" + m.MenuName,
+                              Value = m.MenuId.ToString()
+                          }).ToList();
+            mnlist.Insert(0, new SelectListItem()
+            {
+                Text = "---- Lựa chọn ----",
+                Value = "0"
+            });
+            ViewBag.mnlist = mnlist;
+            return View(mn);
+        }
+        [HttpPost]
+        public IActionResult Edit(TblMenu mn)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.tblMenus.Update(mn);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
 }
