@@ -1,0 +1,80 @@
+﻿@using estore.Models;
+@model IList<TblProducts>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .img-thumbnail {
+        max-width: 100px;
+        max-height: 100px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+    }
+</style>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h2>Danh sách sản phẩm</h2>
+    </div>
+    <p>
+        <a type="button" class="btn btn-success" asp-area="Admin" asp-controller="Product" asp-action="Create">
+            <i class="bi bi-file-earmark-text me-1">Thêm Sản phẩm</i>
+        </a>
+        <section class="sectio dashboard">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-body mt-4">
+                        <table class="table table-borderless datatable">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Giá tiền</th>
+                                    <th>Danh mục</th>
+                                    <th>Ẩn hiện</th>
+                                    <th>Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <th class="text-center" scope="row">@item.Id</th>
+                                        <td>
+                                            <img src="@item.Images" class="img-thumbnail" />
+                                        </td>
+                                        <td class="text-center" scope="row">@item.Name</td>
+                                        <td class="text-center" scope="row">@item.Price</td>
+                                        <td class="text-center" scope="row">
+                                            @if (item.CategoriId == 1)
+                                            {
+                                                <span>Quần áo</span>
+                                            }
+                                            else if (item.CategoriId == 2)
+                                            {
+                                                <span>Áo phông</span>
+                                            }
+                                            else if (item.CategoriId == 3)
+                                            {
+                                                <span>Váy đầm</span>
+                                            }
+
+                                        </td>
+                                        <td class="text-center" scope="row">@item.IsActive</td>
+                                        <td class="text-center" scope="row">
+                                            <a asp-area="Admin" asp-controller="Menu" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm"
+                                               title="Chỉnh sửa"><i class="bi bi-pencil"></i></a>
+                                            <a asp-area="Admin" asp-controller="Menu" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"
+                                               title="Xóa"><i class="bi bi-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </p>
+</main>

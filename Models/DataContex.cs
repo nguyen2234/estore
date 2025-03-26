@@ -8,5 +8,8 @@ namespace estore.Models
         {}
         public DbSet<TblMenu> tblMenus{ get; set; }
         public DbSet<AdminMenu> adminMenus{ get; set; }
+        public DbSet<TblProducts> tblProducts{ get; set; }
+        public DbSet<TblProductDetails> TblProductDetails{ get; set; }
+        public DbSet<TblProductSize> tblProductSizes{ get; set; } 
     }
 }
