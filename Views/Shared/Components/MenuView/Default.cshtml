@@ -60,18 +60,16 @@
                                                 var sMenu = Model.Where(s => s.ParentId == pID).OrderBy(s => s.MenuOrder).ToList();
                                                 if(sMenu.Count == 0)
                                                 {
-                                                    <li><a href="#">@menu.MenuName</a></li>
+                                                    <li><a href="@menu.Link">@menu.MenuName</a></li>
                                                 }
                                                 else
                                                 {
-                                                    <li><a href="#">@menu.MenuName</a>
+                                                    <li><a href="@menu.Link">@menu.MenuName</a>
                                                     <ul class="submenu">
                                                         @foreach(var smn in sMenu)
                                                         {
-                                                            <li><a href="#">@smn.MenuName</a></li>
-                                                        }
-                                                    
-                                                
+                                                            <li><a href="@menu.Link">@smn.MenuName</a></li>
+                                                        }                                         
                                                     </ul>
                                                 </li>
                                                 }

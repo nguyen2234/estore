@@ -1,4 +1,6 @@
-﻿<main>
+﻿@using estore.Models;
+@model IList<TblProducts>
+<main>
 
     <!-- slider Area Start-->
     <div class="slider-area ">
@@ -8,7 +10,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center">
-                            <h2>Product Catagori</h2>
+                            <h2>Danh sách sản phẩm</h2>
                         </div>
                     </div>
                 </div>
@@ -24,29 +26,15 @@
                     <!--Nav Button  -->
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All</a>
-                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">New</a>
-                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Featured</a>
-                            <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Offer</a>
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Tất cả</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Áo</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Quần</a>
+                            <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Phụ kiện</a>
                         </div>
                     </nav>
                     <!--End Nav Button  -->
                 </div>
-                <div class="select-this d-flex">
-                    <div class="featured">
-                        <span>Short by: </span>
-                    </div>
-                    <form action="#">
-                        <div class="select-itms">
-                            <select name="select" id="select1">
-                                <option value="">Featured</option>
-                                <option value="">Featured A</option>
-                                <option value="">Featured B</option>
-                                <option value="">Featured C</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
+                
             </div>
             <!-- Nav Card -->
             <div class="tab-content" id="nav-tabContent">

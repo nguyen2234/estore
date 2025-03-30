@@ -12,4 +12,3 @@ namespace estore.Areas.Admin.Controllers;
             return View();
         }
     }
-

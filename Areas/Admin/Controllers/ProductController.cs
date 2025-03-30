@@ -102,22 +102,32 @@ namespace estore.Areas.Admin.Controllers
             mnList.Insert(0, new SelectListItem()
             {
                 Text = "------Lựa chọn------",
-                Value = "0"
+                Value = string.Empty
             });
             ViewBag.mnList = mnList;
-            return View();
+            return View(mn);
 
         }
         [HttpPost]
-        public IActionResult Edit(TblProducts pd)
+        public async Task<IActionResult> Edit(TblProducts pd)
         {
-            if (ModelState.IsValid)
+            if (pd.ImageFile != null)
             {
-                _context.tblProducts.Update(pd);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(pd.ImageFile.FileName);
+                string filePath = Path.Combine("wwwroot/uploads", fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await pd.ImageFile.CopyToAsync(stream);
+                }
+
+                pd.Images = "/uploads/" + fileName; // Lưu đường dẫn ảnh vào DB
             }
-            return View();
+
+            _context.tblProducts.Update(pd);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
+
     }
 }

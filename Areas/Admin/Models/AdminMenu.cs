@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace estore.Areas.Admin.Models
 {
-    [Table("MenuAdmin")]
+    [Table("tblAdminMenu")]
     public class AdminMenu
     {
         [Key]
