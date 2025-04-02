@@ -14,6 +14,7 @@ namespace estore.Areas.Admin.Controllers;
                 return RedirectToAction("Index", "Login");
             return View();
         }
+<<<<<<< HEAD
 
         public IActionResult Logout()
         {
@@ -25,3 +26,6 @@ namespace estore.Areas.Admin.Controllers;
         }
     }
 
+=======
+    }
+>>>>>>> 8f89f633277344c688e9ace82aab077c686073b2
