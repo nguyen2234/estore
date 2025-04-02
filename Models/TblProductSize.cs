@@ -11,6 +11,8 @@ namespace estore.Models
         public int ProductId { get; set; }
         public string? Size { get; set; }
         public string? Quantity { get; set; }
+        [ForeignKey("ProductId")]
+        public TblProducts? products { get; set; }
 
     }
 }
