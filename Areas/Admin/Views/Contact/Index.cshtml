@@ -1,0 +1,48 @@
+﻿@using estore.Models;
+@model IList<TblContact>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h2>Danh sách liên hệ</h2>
+    </div>
+
+    <section class="section dashboard">
+        <div class="row">
+            <div class="col-12">
+                <div class="card-body mt-4">
+                    <table class="table table-borderless datatable">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center">Họ tên</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Số điện thoại</th>
+                                <th class="text-center">Chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var contact in Model)
+                            {
+                                <tr>
+                                    <td class="text-center">@contact.ContactID</td>
+                                    <td class="text-center">@contact.FullName</td>
+                                    <td class="text-center">@contact.EmailAddress</td>
+                                    <td class="text-center">@contact.Phone</td>
+                                    <td class="text-center">
+                                        <a asp-area="Admin" asp-controller="Contact" asp-action="Details" asp-route-id="@contact.ContactID" class="btn btn-info btn-sm">
+                                            <i class="bi bi-eye"></i> Xem
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
